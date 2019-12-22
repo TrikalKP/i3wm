@@ -68,10 +68,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+b split h
+# bindsym $mod+b split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split toggle 
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -149,6 +149,11 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+      	bindsym $mod+y resize shrink width 10 px or 10 ppt
+        bindsym $mod+u resize grow height 10 px or 10 ppt
+        bindsym $mod+i resize shrink height 10 px or 10 ppt
+        bindsym $mod+o resize grow width 10 px or 10 ppt
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -156,15 +161,15 @@ bar {
         status_command 	i3status
 	position	top
   colors {
-        background #000000
-        statusline #ffffff
-        separator #666666
+        background #2f2f2f
+        statusline #d3d3d3
+        separator #b34d4a
 
-        focused_workspace  #4c7899 #285577 #ffffff
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #2f343a #900000 #ffffff
-        binding_mode       #2f343a #900000 #ffffff
+        focused_workspace  #b34d4a #b35a57 #2f2f2f
+        active_workspace   #b34d4a #b35a57 #2f2f2f
+        inactive_workspace #404040 #404040 #b34d4a
+        urgent_workspace   #d3d3d3 #d3d3d3 #2f2f2f
+        binding_mode       #d3d3d3 #d3d3d3 #2f2f2f
     }
 }
 
@@ -190,10 +195,10 @@ bindsym $mod+Shift+z exec ./lock.sh
 bindsym $mod+Shift+x exec ./screenshot.sh
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.focused          #b34d4a #2f2f2f #d3d3d3 #b35a57   #2f2f2f
+client.focused_inactive #2d2d2d #2d2d2d #d3d3d3 #b35a57   #2f2f2f
+client.unfocused        #2d2d2d #2d2d2d #404040 #b35a57   #222222
+client.urgent           #2f2f2f #b34d4a #2d2d2d #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
@@ -221,5 +226,5 @@ exec nm-applet
 exec pnmixer
 exec xfce4-power-manager
 exec compton -cCG
-exec feh --bg-fill ~/Pictures/wp.jpg
-
+exec_always feh --bg-fill ~/Pictures/wp.jpg
+exec blueberry-tray
